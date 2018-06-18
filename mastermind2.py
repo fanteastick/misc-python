@@ -12,14 +12,14 @@ def main():
 	progress = 10
 	random.shuffle(allcolors)
 	answerlist = allcolors[0:4]
+	random.shuffle(allcolors)
 	if play == "yes":
-
+		print (" ")
 		print ("The computer has chosen a sequence of four colors for you to guess. These colors are chosen from this list:")
 		print (allcolors)
-		print ("You have ten tries. ")
+		print ("You have ten tries. X: invalid input. C: correct spot and color. Y: color is in the list. N: color is not in the list.")
 
 		while (progress > 0):
-			print (" ")
 			print ("please type in 4 colors with spaces in between for your answer list")
 			userlist = raw_input("List your stuff: ")
 			userlist = userlist.lower()
@@ -27,20 +27,16 @@ def main():
 			if userlist == "quit":
 				break
 
-
 			userlist = userlist.split(" ")
-			
 			listlength = len(userlist)
 
+			print ("X: invalid input. C: correct spot and color. Y: color is in the list. N: color is not in the list.")
 			if userlist == answerlist:
 				print "you got the right combination!"
 				sys.exit()
 			elif not listlength == 4:
 				print "you have the wrong number of choices! start over."
 				continue
-
-
-
 
 			colorTester(userlist, answerlist)
 
@@ -55,34 +51,26 @@ def main():
 	print ("The game has ended.")
 
 
-#this is a small function that checks if two colors are the same thing
-def colorMatch(given, answer):
-	if given == answer:
-		print (given + " is correct")
-	else: 
-		print (given + " is wrong")
-
-
 #this method checks if it is in the list
-def colorContain(given, list2):
+#X means invalid, C means correct, Y means it's in the list, N means not in list
+def colorContain(given, list2, answer):
 	if not given in allcolors:
-		print (given + " is not a valid color!")
+		return "X"
 	elif not given in list2:
-		print (given + " is not in the answer list!")
+		return "N"
+	elif given == answer:
+		return "C"
 	else:
-		print (given + " is in the list")
+		return "Y"
 
 def colorTester(list1, list2): #list1 is the user input list, list2 is the answer list
-	print ("your answer was:")
+	print ("your answer was:"),
 	print (list1)
 	print (" ")
+	printer = []
 	for x in range(0, 4):
-		print ("we\'re testing position"),
-		print (x+1)
-		colorMatch(list1[x], list2[x])
-		colorContain(list1[x], list2)
-		print (" ")
+		printer.append(colorContain(list1[x], list2, list2[x]))
+	print printer
 
 
 main()
-
