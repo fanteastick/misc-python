@@ -6,7 +6,7 @@ allcolors = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "maro
 
 #this is the main loop that starts the game
 def main():
-	print ("Welcome to mastermind!")
+	print ("Welcome to mastermind! Blue is a good color!")
 	play = raw_input("Please type yes to begin: ")
 	play = play.lower()
 	progress = 10;
