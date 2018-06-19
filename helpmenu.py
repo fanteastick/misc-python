@@ -8,7 +8,7 @@ def key():
 	print ("N = knight")
 	print ("P = pawn")
 	print ("Type \'help <letter or name>\' to learn how each piece can move.")
-
+#https://angelhack.com
 def getHelpInput():
 	input = raw_input("Type \'help + <letter or name>\' to learn how each piece can move.")
 	if not input.startswith("help"):
